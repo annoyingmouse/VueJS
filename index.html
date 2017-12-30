@@ -14,7 +14,7 @@
         <!-- 2) Output your age, multiplied by 3 -->
         <p>{{ age * 3 }}</p>
         <!-- 3) Call a function to output a random float between 0 and 1 (Math.random()) -->
-        <p>{{ random() }}</p>
+        <p>{{ getRandom() }}</p>
         <p>{{ random100() }}
             <!-- 4) Search any image on Google and output it here by binding the "src" attribute -->
             <div>
@@ -34,11 +34,12 @@
             "img": "https://avatars1.githubusercontent.com/u/1125148?s=460&v=4"
         },
         "methods": {
+            getRandom: () => Math.random(),
             random() {
-                return Math.round(Math.random());
+                return Math.round(this.getRandom());
             },
             random100() {
-                return Math.floor(Math.random() * 100) + 1
+                return Math.floor(this.getRandom() * 100) + 1
             }
         }
     });
