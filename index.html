@@ -20,7 +20,9 @@
     				changeTitle(event) {
 						this.title = event.target.value;
     				},
-    				sayHello: () => "Hello!"
+    				sayHello: function() {
+    					return this.title;
+    				}
   				}
 			});
 		</script>
