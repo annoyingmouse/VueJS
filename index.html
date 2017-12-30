@@ -31,7 +31,7 @@
         "data": {
             "name": "Dominic Myers",
             "age": 45,
-            "img": null
+            "img": "https://avatars1.githubusercontent.com/u/1125148?s=460&v=4"
         },
         "methods": {
             random() {
@@ -39,42 +39,7 @@
             },
             random100() {
                 return Math.floor(Math.random() * 100) + 1
-            },
-            getImg() {
-                fetch("https://ajax.googleapis.com/ajax/services/search/images", {
-                    "method": "post",
-                    "headers": {
-                        "Accept": "application/json, text/plain, */*",
-                        "Content-Type": "application/json"
-                    },
-                    "body": JSON.stringify({
-                        "v": "1.0",
-                        "rsz": 8,
-                        "start": 0,
-                        "q": "kitten"
-                    })
-                }).then(function(response) {
-                    console.log(response);
-                });
             }
-        },
-        created: function() {
-            fetch("https://ajax.googleapis.com/ajax/services/search/images", {
-                "mode": "no-cors",
-                "method": "post",
-                "headers": {
-                    "Accept": "application/json, text/plain, */*",
-                    "Content-Type": "application/json"
-                },
-                "body": JSON.stringify({
-                    "v": "1.0",
-                    "rsz": 1,
-                    "start": 0,
-                    "q": "kitten"
-                })
-            }).then(function(response) {
-                console.log(response);
-            });
         }
     });
     </script>
