@@ -1,36 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>VueJS</title>
-		<script src="vue.js"></script>
-	</head>
-	<body>
-		<div id="app">
-			<h1 v-once>{{ title }}</h1>
-		  	<input type="text" v-on:input="changeTitle">
-		  	<p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>
-		  	<hr/>
-		  	<p v-html="finishedLink"></p>
-		</div>
-		<script>
-			new Vue({
-  				"el": "#app",
-  				"data": {
-    				"title": "Hello World!",
-    				"link": "http://google.com",
-    				"finishedLink": '<a href="http://google.com">Google</a>'
-  				},
-  				"methods": {
-    				changeTitle(event) {
-						this.title = event.target.value;
-    				},
-    				sayHello: function() {
-    					this.title = "Hello!"
-    					return this.title;
-    				}
-  				}
-			});
-		</script>
-	</body>
+
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="exercise">
+        <!-- 1) Fill the <p> below with your Name and Age - using Interpolation -->
+        <p>VueJS is pretty cool - {{ name }} ({{ age }})</p>
+        <!-- 2) Output your age, multiplied by 3 -->
+        <p>{{ age * 3 }}</p>
+        <!-- 3) Call a function to output a random float between 0 and 1 (Math.random()) -->
+        <p>{{ random() }}</p>
+        <p>{{ random100() }}
+            <!-- 4) Search any image on Google and output it here by binding the "src" attribute -->
+            <div>
+                <img v-bind:src="img" style="width:100px;height:100px">
+            </div>
+            <!-- 5) Pre-Populate this input with your name (set the "value" attribute) -->
+            <div>
+                <input v-bind:value="name" type="text">
+            </div>
+    </div>
+    <script>
+    new Vue({
+        "el": "#exercise",
+        "data": {
+            "name": "Dominic Myers",
+            "age": 45,
+            "img": null
+        },
+        "methods": {
+            random() {
+                return Math.round(Math.random());
+            },
+            random100() {
+                return Math.floor(Math.random() * 100) + 1
+            },
+            getImg() {
+                fetch("https://ajax.googleapis.com/ajax/services/search/images", {
+                    "method": "post",
+                    "headers": {
+                        "Accept": "application/json, text/plain, */*",
+                        "Content-Type": "application/json"
+                    },
+                    "body": JSON.stringify({
+                        "v": "1.0",
+                        "rsz": 8,
+                        "start": 0,
+                        "q": "kitten"
+                    })
+                }).then(function(response) {
+                    console.log(response);
+                });
+            }
+        },
+        created: function() {
+            fetch("https://ajax.googleapis.com/ajax/services/search/images", {
+                "mode": "no-cors",
+                "method": "post",
+                "headers": {
+                    "Accept": "application/json, text/plain, */*",
+                    "Content-Type": "application/json"
+                },
+                "body": JSON.stringify({
+                    "v": "1.0",
+                    "rsz": 1,
+                    "start": 0,
+                    "q": "kitten"
+                })
+            }).then(function(response) {
+                console.log(response);
+            });
+        }
+    });
+    </script>
+</body>
+
 </html>
