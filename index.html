@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:v-on="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta charset="UTF-8">
-		<title>VueJS</title>
-		<script src="vue.js"></script>
-	</head>
-	<body>
-		<div id="app">
-            <button v-on:click="increase(2, $event)">Click me</button>
-		  	<p>{{ counter }}</p>
-            <p v-on:mousemove="updateCoordinates">
-                Coordinates {{ x }} / {{ y }}
-                - <span v-on:mousemove.stop="">DEAD SPOT</span>
-            </p>
-            <input type="text" v-on:keyup.enter="alertMe">
-		</div>
-		<script>
-			new Vue({
-  				"el": "#app",
-  				"data": {
-    				"counter": 0,
-                    "x": 0,
-                    "y": 0
-  				},
-  				"methods": {
-                    increase(step, event) {
-						this.counter += step;
-    				},
-                    updateCoordinates(event){
-                        this.x = event.clientX;
-                        this.y = event.clientY;
+      xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>VueJS</title>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="exercise">
+            <!-- 1) Show an alert when the Button gets clicked -->
+            <div>
+                <button v-on:click="showAlert">Show Alert</button>
+            </div>
+            <!-- 2) Listen to the "keydown" event and store the value in a data property (hint: event.target.value gives you the value) -->
+            <div>
+                <input type="text" v-on:keydown="updateValue" v-bind:data-value="value">
+                <p>{‌{ value }}</p>
+            </div>
+            <!-- 3) Adjust the example from 2) to only fire if the "key down" is the ENTER key -->
+            <div>
+                <input type="text" v-on:keydown.enter="updateValueEnter">
+                <p>{‌{ value }}</p>
+            </div>
+        </div>
+        <script>
+            new Vue({
+                "el": "#exercise",
+                "data": {
+                    "value": ""
+                },
+                "methods": {
+                    showAlert: () => alert("Alert!"),
+                    updateValue(event) {
+                        this.value = event.target.value;
                     },
-                    alertMe(){
-                        alert("Alert!");
+                    updateValueEnter(event) {
+                        this.value = event.target.value;
                     }
-  				}
-			});
-		</script>
-	</body>
+                }
+            });
+        </script>
+    </body>
 </html>
