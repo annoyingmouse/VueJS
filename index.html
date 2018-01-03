@@ -11,16 +11,16 @@
         <div id="exercise">
             <!-- 1) Show an alert when the Button gets clicked -->
             <div>
-                <button v-on:click="showAlert">Show Alert</button>
+                <button v-on:click="alertMe">Show Alert</button>
             </div>
             <!-- 2) Listen to the "keydown" event and store the value in a data property (hint: event.target.value gives you the value) -->
             <div>
-                <input type="text" v-on:keydown="updateValue" v-bind:data-value="value"/>
+                <input type="text" v-on:keydown="value = $event.target.value" v-bind:data-value="value"/>
                 <p>{{value}}</p>
             </div>
             <!-- 3) Adjust the example from 2) to only fire if the "key down" is the ENTER key -->
             <div>
-                <input type="text" v-on:keydown.enter="updateValueEnter"/>
+                <input type="text" v-on:keydown.enter="value = $event.target.value"/>
                 <p>{{value}}</p>
             </div>
         </div>
@@ -31,13 +31,7 @@
                     "value": ""
                 },
                 "methods": {
-                    showAlert: () => alert("Alert!"),
-                    updateValue(event) {
-                        this.value = event.target.value;
-                    },
-                    updateValueEnter(event) {
-                        this.value = event.target.value;
-                    }
+                    alertMe: () => alert("Alert!")
                 }
             });
         </script>
