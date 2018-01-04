@@ -26,13 +26,14 @@
     new Vue({
         "el": '#exercise',
         "data": {
-            "value": 0,
-            "result": "not there yet"
+            "value": 0
+        },
+        "computed": {
+            result() {
+                return this.value === 37 ? 'done' : 'not there yet';
+            }
         },
         "watch": {
-            value(v) {
-                this.result = (v === 37) ? "done" : "not there yet";
-            },
             result() {
                 const vs = this;
                 setTimeout(function(){
