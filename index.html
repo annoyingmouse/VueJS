@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:v-on="http://www.w3.org/1999/xhtml">
+      xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta charset="UTF-8">
 		<title>VueJS</title>
@@ -8,37 +9,18 @@
 	</head>
 	<body>
 		<div id="app">
-            <button v-on:click="counter++">Increase</button>
-            <button v-on:click="counter--">Decrease</button>
-            <button v-on:click="secondCounter++">Increase second counter</button>
-            <p>Counter: {{ counter }} | {{ secondCounter }}</p>
-            <p>Result: {{ result() }} | {{ output }}</p>
+            <button v-on:click="changeLink">Click to change link</button>
+            <a v-bind:href="link">Link</a>
 		</div>
 		<script>
 			new Vue({
   				"el": "#app",
   				"data": {
-    				"counter": 0,
-                    "secondCounter": 0
+    				"link": "http://google.com"
   				},
-                "computed": {
-                    output() {
-                        console.log("Computed");
-                        return this.counter > 5 ? "Greater than 5" : "Less than 5"
-                    }
-                },
-                "watch": {
-                    counter(value){
-                        const vm = this;
-                        setTimeout(() => {
-                            vm.counter = 0;
-                        }, 2000)
-                    }
-                },
                 "methods": {
-                    result() {
-                        console.log("Method");
-                        return this.counter > 5 ? "Greater than 5" : "Less than 5"
+                    changeLink() {
+                        this.link = "http://apple.com"
                     }
                 }
 			});
