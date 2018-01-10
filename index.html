@@ -18,6 +18,10 @@
             <div v-for="(value, key, index) in person">Person number {{i}} - {{key}}: {{value}} ({{index}})</div>
         </li>
     </ul>
+    <span v-for="n in 10">{{n}}</span>
+    <ul>
+        <li v-for="n in 10">{{n}}</li>
+    </ul>
     <hr>
     <template v-for="(ingredient, index) in ingredients">
         <h1>{{ingredient}}</h1>
