@@ -15,7 +15,7 @@
     <hr>
     <ul>
         <li v-for="(person) in persons">
-            <span v-for="(value, key) in person">{{value}} ({{key}}) </span>
+            <div v-for="(value, key) in person">{{key}}: {{value}} </div>
         </li>
     </ul>
     <hr>
