@@ -1,80 +1,26 @@
 new Vue({
     "el": "#app",
     "data": {
-        "playerHealth": 100,
-        "monsterHealth": 100,
-        "gameIsRunning": false,
-        "turns": []
+        "title": "The VueJS Instance",
+        "showParagraph": false
     },
     "methods": {
-        startGame() {
-            this.gameIsRunning = true;
-            this.playerHealth = 100;
-            this.monsterHealth = 100;
-            this.turns = [];
+        show(){
+            this.showParagraph = true;
+            this.updateTitle("The VueJS Instance (Updated)")
         },
-        attack() {
-            const damage = this.calculateDamage(3, 10);
-            this.monsterHealth -= damage;
-            this.turns.unshift({
-                "isPlayer": true,
-                "text": `Player hits monster for ${damage}`
-            });
-            if (this.checkWin()) {
-                return;
-            }
-            this.monsterAttacks();
-        },
-        specialAttack() {
-            const damage = this.calculateDamage(10, 20);
-            this.monsterHealth -= damage;
-            this.turns.unshift({
-                "isPlayer": true,
-                "text": `Player hits monster hard for ${damage}`
-            });
-            if (this.checkWin()) {
-                return;
-            }
-            this.monsterAttacks();
-        },
-        heal() {
-            this.playerHealth <= 90 ? this.playerHealth += 10 : this.playerHealth = 100;
-            this.turns.unshift({
-                "isPlayer": true,
-                "text": "Player heals for 10"
-            });
-            this.monsterAttacks();
-        },
-        giveUp() {
-            this.gameIsRunning = false;
-        },
-        monsterAttacks(){
-            const damage = this.calculateDamage(5, 12);
-            this.playerHealth -= damage;
-            this.checkWin();
-            this.turns.unshift({
-                "isPlayer": false,
-                "text": `Player hits monster for ${damage}`
-            });
-        },
-        "calculateDamage": (min, max) => Math.max(Math.floor(Math.random() * max) + 1, min),
-        checkWin() {
-            if (this.monsterHealth <= 0) {
-                if (confirm("You won! New Game?")) {
-                    this.startGame()
-                } else {
-                    this.gameIsRunning = false;
-                }
-                return true;
-            } else if (this.playerHealth <= 0) {
-                if (confirm("You lost! New Game?")) {
-                    this.startGame()
-                } else {
-                    this.gameIsRunning = false;
-                }
-                return true;
-            }
-            return false;
+        updateTitle(title){
+            this.title = title;
+        }
+    },
+    "computed":{
+        lowercaseTitle(){
+            return this.title.toLowerCase();
+        }
+    },
+    "watch":{
+        title(value){
+            alert(`Title changed, new value: ${value}`);
         }
     }
 });
