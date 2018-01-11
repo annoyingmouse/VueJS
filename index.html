@@ -4,17 +4,20 @@
       xmlns:v-bind="http://www.w3.org/1999/xhtml"
       xmlns:v-if="http://www.w3.org/1999/xhtml"
       xmlns:v-else="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Working</title>
-    <script src="vue.js"></script>
-</head>
-<body>
-<div id="app">
-    <h1>{{title}}</h1>
-    <button v-on:click="show">Show paragraph</button>
-    <p v-if="showParagraph">This is not always visible</p>
-</div>
-<script src="app.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Working</title>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app1">
+            <h1>{{title}}</h1>
+            <button v-on:click="show">Show paragraph</button>
+            <p v-if="showParagraph">This is not always visible</p>
+        </div>
+        <div id="app2">
+            <h1>{{title}}</h1>
+        </div>
+        <script src="app.js"></script>
+    </body>
 </html>
