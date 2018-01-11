@@ -60,18 +60,10 @@ new Vue({
         "calculateDamage": (min, max) => Math.max(Math.floor(Math.random() * max) + 1, min),
         checkWin() {
             if (this.monsterHealth <= 0) {
-                if (confirm("You won! New Game?")) {
-                    this.startGame()
-                } else {
-                    this.gameIsRunning = false;
-                }
+                confirm("You won! New Game?") ? this.startGame() : this.gameIsRunning = false;
                 return true;
             } else if (this.playerHealth <= 0) {
-                if (confirm("You lost! New Game?")) {
-                    this.startGame()
-                } else {
-                    this.gameIsRunning = false;
-                }
+                confirm("You lost! New Game?") ? this.startGame(): this.gameIsRunning = false;
                 return true;
             }
             return false;
