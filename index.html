@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:v-on="http://www.w3.org/1999/xhtml"
-      xmlns:v-bind="http://www.w3.org/1999/xhtml"
-      xmlns:v-if="http://www.w3.org/1999/xhtml"
-      xmlns:v-else="http://www.w3.org/1999/xhtml">
+      xmlns:v-on="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
         <title>Working</title>
@@ -14,6 +11,9 @@
             <h1 ref="heading">{{title}}</h1>
             <button v-on:click="show" ref="myButton">Show paragraph</button>
             <p v-if="showParagraph">This is not always visible</p>
+            <hello></hello>
+            <hello></hello>
+            <hello></hello>
         </div>
         <div id="app2">
             <h1>{{title}}</h1>
