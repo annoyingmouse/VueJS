@@ -10,10 +10,16 @@ new Vue({
     "beforeUpdate": () => console.log("beforeUpdate()"),
     "updated": () => console.log("updated()"),
     "beforeDestroy": () => console.log("beforeDestroy()"),
-    "destroyed": () => console.log("destroyed()"),
+    "destroyed": () => console.log("destroyed() - now unable to change the title with the button..."),
     "methods": {
-        "destroy": function(){
+        "changeTitle": function () {
+            this.title = `Changed + ${this.randomIntFromInterval(1, 3)}`
+        },
+        "destroy": function () {
             this.$destroy();
+        },
+        randomIntFromInterval(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
         }
     }
 });
