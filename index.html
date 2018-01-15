@@ -8,20 +8,19 @@
 	</head>
 	<body>
 		<div id="app">
-		  	<input type="text" v-on:input="changeTitle">
-		  	<p>{{title}}</p>
+			<my-cmp></my-cmp>
+			<hr/>
+			<my-cmp></my-cmp>
 		</div>
 		<script>
+            Vue.component("my-cmp", {
+                "data": () => ({
+                    "status": "Critical"
+                }),
+                "template": "<p>Server Status: {{ status }}</p>"
+            })
 			new Vue({
-  				"el": "#app",
-  				"data": {
-    				"title": "Hello World!"
-  				},
-  				"methods": {
-    				changeTitle(event) {
-						this.title = event.target.value;
-    				}
-  				}
+  				"el": "#app"
 			});
 		</script>
 	</body>
