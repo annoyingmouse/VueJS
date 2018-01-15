@@ -1,9 +1,14 @@
 <template>
-    <h1>Hello World!</h1>
+    <h1>Server status: {{ status }}</h1>
 </template>
 
 <script>
     export default {
+        "data": function() {
+            return {
+                "status": "Critical"
+            };
+        }
     }
 </script>
 
