@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:v-on="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta charset="UTF-8">
-		<title>VueJS</title>
-		<script src="vue.js"></script>
-	</head>
-	<body>
-		<div id="app">
-			<my-cmp></my-cmp>
-			<hr/>
-			<my-cmp></my-cmp>
-		</div>
-		<script>
+    <head>
+        <meta charset="UTF-8">
+        <title>VueJS</title>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <my-cmp></my-cmp>
+            <hr/>
+            <my-cmp></my-cmp>
+        </div>
+        <script>
+            const data = {"status": "Critical"};
             Vue.component("my-cmp", {
-                "data": () => ({
-                    "status": "Critical"
-                }),
-                "template": "<p>Server Status: {{ status }}</p>"
-            })
-			new Vue({
-  				"el": "#app"
-			});
-		</script>
-	</body>
+                "data": function () {
+                    return data;
+                },
+                "template": "<p>Server Status: {{ status }} (<button @click='changeStatus'>Change</button>)</p>",
+                "methods": {
+                    changeStatus(){
+                        this.status = "Normal"
+                    }
+                }
+            });
+            new Vue({
+                "el": "#app"
+            });
+        </script>
+    </body>
 </html>
