@@ -1,10 +1,10 @@
-import Vue from "vue"
-import App from "./App"
-import Home from "./Home"
+import Vue from 'vue'
+import App from './App.vue'
+import Container from "./Container"
 
-Vue.component("app-servers", Home);
+Vue.component("app-container", Container);
 
 new Vue({
-  "el": "#app",
-  "render": h => h(App)
+    el: '#app',
+    render: h => h(App)
 });

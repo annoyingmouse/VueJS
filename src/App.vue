@@ -1,9 +1,11 @@
 <template>
-    <app-servers></app-servers>
+    <app-container></app-container>
 </template>
 
 <script>
 </script>
 
-<style lang="scss">
+<style>
+
 </style>
+

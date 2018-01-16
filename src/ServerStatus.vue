@@ -1,19 +1,13 @@
 <template>
-    <div>
-        <p>Server status: {{ status }}</p>
-        <hr>
-        <button @click="changeStatus">Change Status</button>
-    </div>
+    <li class="list-group-item">
+        Server #{{ key }}
+    </li>
 </template>
 
 <script>
     export default {
-        "data": () => ({"status": "Critical"}),
-        "methods": {
-            changeStatus(){
-                this.status = "Normal"
-            }
-        }
+        "name": "ServerStatus",
+        "props": ["key"]
     }
 </script>
 
