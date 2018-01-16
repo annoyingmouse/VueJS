@@ -1,10 +1,7 @@
-import Vue from 'vue'
-import App from './App.vue'
-import Container from "./Container"
-
-Vue.component("app-container", Container);
+import Vue from "vue"
+import App from "./App"
 
 new Vue({
-    el: '#app',
+    el: "#app",
     render: h => h(App)
 });
