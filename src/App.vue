@@ -19,10 +19,10 @@
 
     export default {
         components: {
-            appHeader: Header,
-            Servers,
-            appServerDetails: ServerDetails,
-            appFooter: Footer
+            appHeader: Header, // VueJS will automatically convert appHeader to app-header
+            Servers, // As long as we use the same name we can do it like this too - ES6 makes this a key:value pair in the background
+            "app-server-details": ServerDetails,
+            "app-footer": Footer
         }
     }
 </script>
