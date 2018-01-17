@@ -19,10 +19,10 @@
 
     export default {
         components: {
-            "app-header": Header,
-            "app-servers": Servers,
-            "app-server-details": ServerDetails,
-            "app-footer": Footer
+            appHeader: Header,
+            appServers: Servers,
+            appServerDetails: ServerDetails,
+            appFooter: Footer
         }
     }
 </script>
