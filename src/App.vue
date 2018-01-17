@@ -12,10 +12,10 @@
 </template>
 
 <script>
-    import Header from "./components/Header";
-    import Footer from "./components/Footer";
-    import Servers from "./components/Servers";
-    import ServerDetails from "./components/ServerDetails";
+    import Header from "./components/shared/Header";
+    import Footer from "./components/shared/Footer";
+    import Servers from "./components/Server/Servers";
+    import ServerDetails from "./components/Server/ServerDetails";
 
     export default {
         components: {
