@@ -1,34 +1,26 @@
 <template>
     <div class="container">
-        <app-header></app-header>
-        <hr>
         <div class="row">
-            <servers></servers>
-            <app-server-details></app-server-details>
+            <div class="col-xs-12">
+                <app-user></app-user>
+            </div>
         </div>
-        <hr>
-        <app-footer></app-footer>
     </div>
 </template>
 
 <script>
-    import Header from "./components/shared/Header";
-    import Footer from "./components/shared/Footer";
-    import Servers from "./components/Server/Servers";
-    import ServerDetails from "./components/Server/ServerDetails";
+    import User from './components/User.vue';
 
     export default {
         components: {
-            appHeader: Header, // VueJS will automatically convert appHeader to app-header
-            Servers, // As long as we use the same name we can do it like this too - ES6 makes this a key:value pair in the background
-            "app-server-details": ServerDetails,
-            "app-footer": Footer
+            appUser: User
         }
     }
 </script>
 
 <style>
-
+    div.component {
+        border: 1px solid black;
+        padding: 30px;
+    }
 </style>
-
-
