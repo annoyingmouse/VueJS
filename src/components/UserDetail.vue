@@ -8,7 +8,13 @@
 
 <script>
     export default {
-        props: ["name"],
+        props: {
+            name: {
+                type: String,
+                required: true, // Not needed if there's a default
+                default: "Dom"  // Not needed if it's required
+            }
+        },
         methods: {
             switchName(){
                 return this.name.split("").reverse().join("");
