@@ -3,6 +3,7 @@
         <h3>You may view the User Details here</h3>
         <p>Many Details</p>
         <p>User Name: {{ switchName() }}</p>
+        <p>User Age: {{ userAge }}</p>
         <button @click="resetName">Reset name</button>
         <button @click="resetFn()">Reset name</button>
     </div>
@@ -13,7 +14,12 @@
         props: {
             name: {
                 type: String,
-                resetFn: Function
+            },
+            userAge: {
+                type: Number
+            },
+            resetFn: {
+                type: Function
             }
         },
         methods: {
