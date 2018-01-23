@@ -1,6 +1,12 @@
 <template>
     <div>
-        <slot></slot>
+        <div class="title">
+            <slot name="title"></slot>
+        </div>
+        <hr/>
+        <div>
+            <slot name="content"></slot>
+        </div>
     </div>
 </template>
 
@@ -17,7 +23,7 @@
         margin: 30px auto;
         text-align: center;
     }
-    h2 {
-        color: red;
+    .title {
+        font-style: italic;
     }
 </style>
