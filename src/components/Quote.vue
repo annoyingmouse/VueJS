@@ -2,6 +2,9 @@
     <div>
         <div class="title">
             <slot name="title"></slot>
+            <span style="color: #ccc;">
+                <slot name="subtitle">The subtitle</slot>
+            </span>
         </div>
         <hr/>
         <div>
