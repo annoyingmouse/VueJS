@@ -5,14 +5,26 @@
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                     <h1>File a Complaint</h1>
                     <hr>
+                    <!--<div class="form-group">-->
+                        <!--<label for="email">Mail</label>-->
+                        <!--<input-->
+                                <!--type="text"-->
+                                <!--id="email"-->
+                                <!--class="form-control"-->
+                                <!--v-model.trim="userData.email">-->
+                    <!--</div>-->
+                    <!-- Functionally equivalent to: -->
                     <div class="form-group">
                         <label for="email">Mail</label>
                         <input
                                 type="text"
                                 id="email"
                                 class="form-control"
-                                v-model.trim="userData.email">
+                                :value="userData.email"
+                                @input="userData.email = $event.target.value">
                     </div>
+
+
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input
