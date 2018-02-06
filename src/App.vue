@@ -13,7 +13,7 @@
                 <h1>Custom Directives</h1>
                 <p v-highlight="'red'">Colour This</p>
                 <p v-highlight:background.dalayed="'red'">Or Colour This</p>
-                <p v-local-highlight:background.dalayed="'red'">Colour This, Too</p>
+                <p v-local-highlight:background.dalayed.blink="'red'">Colour This, Too</p>
             </div>
         </div>
     </div>
@@ -28,13 +28,30 @@
                     if(binding.modifiers["dalayed"]){
                         delay = 3000;
                     }
-                    setTimeout(() => {
-                        if(binding.arg === "background"){
-                            el.style.backgroundColor = binding.value;
-                        }else{
-                            el.style.color = binding.value;
-                        }
-                    }, delay);
+                    if(binding.modifiers["blink"]){
+                        let mainColour = binding.value;
+                        let secondColour = "blue";
+                        let currentColour = mainColour;
+                        setTimeout(() => {
+                            setInterval(() => {
+                                currentColour === secondColour ? currentColour = mainColour: currentColour = secondColour;
+                                if(binding.arg === "background"){
+                                    el.style.backgroundColor = currentColour;
+                                }else{
+                                    el.style.color = currentColour;
+                                }
+                            }, 1000);
+
+                        }, delay);
+                    } else {
+                        setTimeout(() => {
+                            if(binding.arg === "background"){
+                                el.style.backgroundColor = binding.value;
+                            }else{
+                                el.style.color = binding.value;
+                            }
+                        }, delay);
+                    }
                 }
             }
         }
