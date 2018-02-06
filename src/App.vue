@@ -13,6 +13,7 @@
                 <h1>Custom Directives</h1>
                 <p v-highlight="'red'">Colour This</p>
                 <p v-highlight:background.dalayed="'red'">Or Colour This</p>
+                <p v-local-highlight:background.dalayed="'red'">Colour This, Too</p>
             </div>
         </div>
     </div>
@@ -20,6 +21,23 @@
 
 <script>
     export default {
+        directives:{
+            "local-highlight":{
+                bind(el, binding, vnode){
+                    let delay = 0;
+                    if(binding.modifiers["dalayed"]){
+                        delay = 3000;
+                    }
+                    setTimeout(() => {
+                        if(binding.arg === "background"){
+                            el.style.backgroundColor = binding.value;
+                        }else{
+                            el.style.color = binding.value;
+                        }
+                    }, delay);
+                }
+            }
+        }
     }
 </script>
 
