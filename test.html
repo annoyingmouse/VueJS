@@ -148,10 +148,22 @@
     <body>
         <div class="spinner__overlay">
             <svg class="iconsvg spinner__icon">
+
                 <circle class="bynewSpinner-path" fill="none" stroke-width="6" stroke="black" stroke-linecap="round" cx="33" cy="33" r="30">
-                    <animate begin="0s" dur="1.4s" type="ease-in-out" attributeName="stroke-dashoffset" values="187; 46.75; 187" keyTimes="0; .5; 1" repeatCount="indefinite"/>
-                    <!--<animate begin="0s" dur="1.4s" type="rotate" attributeName="transform" values="0; 135; 450" keyTimes="0; .5; 1" repeatCount="indefinite"/>-->
-                    <animateTransform begin="0s" dur="1.4s" type="rotate" values="0 16.5 16.5; 135 16.5 16.5; 450 16.5 16.5" keyTimes="0; .5; 1"  repeatCount="indefinite"/>
+                    <animate
+                            begin="0s"
+                            dur="1.4s"
+                            attributeName="stroke-dashoffset"
+                            values="187px; 46.75px; 187px"
+                            keyTimes="0; .5; 1"
+                            repeatCount="indefinite"></animate>
+                    <animateTransform attributeType="xml"
+                                      attributeName="transform"
+                                      type="rotate"
+                                      dur="1.4s"
+                                      values="0;135;450"
+                                      keyTimes="0; .5; 1"
+                                      repeatCount="indefinite"></animateTransform>
                 </circle>
             </svg>
         </div>
