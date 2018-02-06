@@ -13,7 +13,7 @@
                 <h1>Custom Directives</h1>
                 <p v-highlight="'red'">Colour This</p>
                 <p v-highlight:background.dalayed="'red'">Or Colour This</p>
-                <p v-local-highlight:background.dalayed.blink="'red'">Colour This, Too</p>
+                <p v-local-highlight:background.dalayed.blink="{mainColour: 'red', secondColour: 'green', delay: 500}">Colour This, Too</p>
             </div>
         </div>
     </div>
@@ -29,8 +29,8 @@
                         delay = 3000;
                     }
                     if(binding.modifiers["blink"]){
-                        let mainColour = binding.value;
-                        let secondColour = "blue";
+                        let mainColour = binding.value.mainColour;
+                        let secondColour = binding.value.secondColour;
                         let currentColour = mainColour;
                         setTimeout(() => {
                             setInterval(() => {
@@ -40,15 +40,14 @@
                                 }else{
                                     el.style.color = currentColour;
                                 }
-                            }, 1000);
-
+                            }, binding.value.delay);
                         }, delay);
                     } else {
                         setTimeout(() => {
                             if(binding.arg === "background"){
-                                el.style.backgroundColor = binding.value;
+                                el.style.backgroundColor = binding.value.mainColour;
                             }else{
-                                el.style.color = binding.value;
+                                el.style.color = binding.value.mainColour;
                             }
                         }, delay);
                     }
