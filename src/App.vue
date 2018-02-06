@@ -3,7 +3,12 @@
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <h1>Directives Exercise</h1>
-                <p v-once.click="'Hello World'">Hello World</p>
+                <button v-customOn:click="clicked" class="btn btn-primary">Click me</button>
+                <hr>
+                <div
+                        v-custom-on:mouseenter="mouseEnter"
+                        v-custom-on:mouseleave="mouseLeave"
+                        style="width: 100px; height: 100px; background-color: lightgreen;"></div>
             </div>
         </div>
     </div>
@@ -12,14 +17,26 @@
 <script>
     export default {
         directives:{
-            "once":{
-                bind(el, binding, vnode){
-                    if(binding.modifiers["click"]){
-                        el.addEventListener("click", function(){
-                            console.log(binding.value);
-                        });
-                    }
+            "customOn":{
+                bind(el, binding){
+                    // el.onclick = function(){
+                    //     binding.value();
+                    // }
+                    const type = binding.arg;
+                    const fn = binding.value;
+                    el.addEventListener(type, fn);
                 }
+            }
+        },
+        methods:{
+            clicked(){
+                alert("I was clicked");
+            },
+            mouseEnter(){
+                console.log("Mouse entered")
+            },
+            mouseLeave(){
+                console.log("Mouse left")
             }
         }
     }
