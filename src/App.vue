@@ -34,7 +34,10 @@
         components:{
             appList: List
         },
-        mixins:[fruitMixin]
+        mixins:[fruitMixin],
+        created(){
+            console.log("Inside List Created Hook");
+        }
     }
 </script>
 
