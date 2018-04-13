@@ -6,8 +6,14 @@
             tag="button" 
             :to="{
                 'name': 'userEdit', 
-                'params': {id: $route.params.id
-                }}"
+                'params': {
+                    'id': $route.params.id
+                },
+                'query': {
+                    'locale': 'en',
+                    'q': 100
+                }
+            }"
             class="btn btn-primary">Edit user</router-link>
     </div>
 </template>
